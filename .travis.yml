@@ -1,9 +1,12 @@
 language: csharp
 mono: none
-dotnet: 2.2.104
+dotnet: 2.2
+sudo: required
+dist: xenial
 
 install:
 - dotnet restore
 
 script:
- - dotnet build
+- dotnet build
+- dotnet test
