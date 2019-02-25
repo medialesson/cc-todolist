@@ -18,8 +18,16 @@ namespace TodoList.Data
 
         public TodoItem()
         {
-            Id = new Guid().ToString();
+            Id = Guid.NewGuid().ToString();
+            IsCompleted = false;
             AddedAt = DateTime.Now;
+        }
+
+        public override string ToString()
+        {
+            return $"#{Id} - {Title} - {Content} - " +
+                   $"{(IsCompleted ? "Completed" : "Pending")} - " +
+                   $"{AddedAt.ToLocalTime()}";
         }
     }
 }

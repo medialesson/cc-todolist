@@ -48,5 +48,18 @@ namespace TodoList.Repositories
         {
             return _todoList.ToList();
         }
+
+        public void UpdateItem(TodoItem item)
+        {
+            var foundItem = _todoList.FirstOrDefault(i => i.Id == item.Id);
+            _todoList.Remove(foundItem);
+
+            _todoList.Add(item);
+        }
+
+        public void Sort()
+        {
+            _todoList = _todoList.OrderByDescending(i => i.AddedAt).ToList();
+        }
     }
 }
