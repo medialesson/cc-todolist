@@ -13,7 +13,7 @@ namespace TodoList
 
     public class App
     {
-        public TodoRepository TodoRepository { get; set; }
+        public ITodoRepository TodoRepository { get; set; }
 
         public App()
         {

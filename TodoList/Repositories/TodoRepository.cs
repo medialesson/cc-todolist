@@ -6,7 +6,7 @@ using TodoList.Data;
 
 namespace TodoList.Repositories
 {
-    public class TodoRepository
+    public class TodoRepository : ITodoRepository
     {
         private IList<TodoItem> _todoList;
 
