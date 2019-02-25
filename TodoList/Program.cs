@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using TodoList.Data;
 using TodoList.Repositories;
@@ -25,22 +26,43 @@ namespace TodoList
             {
                 Console.Write("> ");
                 string command = Console.ReadLine();
-                switch (command)
-                {
-                    case "list":
-                        PrintList();
-                        break;
-                    case "rem":
-                        PromptRemoveItem();
-                        break;
-                    case "add":
-                        PromptNewItem();
-                        break;
-                    default:
-                        break;
-                }
+                RunCommand(command);
             }
-            await Task.Delay(-1);
+
+            // await Task.Delay(-1);
+        }
+
+        public void RunCommand(string command)
+        {
+            switch (command)
+            {
+                case "list":
+                    PrintList();
+                    break;
+                case "rem":
+                    PromptRemoveItem();
+                    break;
+                case "add":
+                    PromptNewItem();
+                    break;
+                case "complete":
+                    PromptCompleteItem();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void PromptCompleteItem()
+        {
+            Console.WriteLine("ID:");
+            var id = Console.ReadLine();
+
+            var item = TodoRepository.GetItem(id);
+            item.IsCompleted = true;
+
+            TodoRepository.UpdateItem(item);
+            Console.WriteLine("Item was marked as completed.");
         }
 
         private void PromptRemoveItem()
@@ -69,6 +91,13 @@ namespace TodoList
         private void PrintList()
         {
             var list = this.TodoRepository.GetAllItems();
+
+            if (list.ToList().Count < 1)
+            {
+                Console.WriteLine("No items were found.");
+                return;
+            }
+
             foreach (TodoItem todoItem in list)
             {
                 Console.WriteLine(todoItem);

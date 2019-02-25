@@ -49,6 +49,11 @@ namespace TodoList.Repositories
             return _todoList.ToList();
         }
 
+        public TodoItem GetItem(string id)
+        {
+            return _todoList.FirstOrDefault(i => i.Id == id);
+        }
+
         public void UpdateItem(TodoItem item)
         {
             var foundItem = _todoList.FirstOrDefault(i => i.Id == item.Id);
