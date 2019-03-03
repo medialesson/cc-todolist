@@ -74,7 +74,7 @@ namespace TodoList
         private void PromptNewItem()
         {
             var item = new TodoItem();
-            
+
             Console.WriteLine("Title:");
             item.Title = Console.ReadLine();
 
