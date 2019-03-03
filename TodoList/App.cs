@@ -64,7 +64,7 @@ namespace TodoList
                 return;
             }
 
-            command.Action.Invoke();
+            command.Execute();
         }
 
         /// <summary>
