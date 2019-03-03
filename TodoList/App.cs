@@ -8,6 +8,9 @@ using TodoList.Repositories;
 
 namespace TodoList
 {
+    /// <summary>
+    /// This class bootstraps the whole application and makes it executable
+    /// </summary>
     public class App
     {
         public ITodoRepository TodoRepository { get; set; }
@@ -19,6 +22,9 @@ namespace TodoList
             InitializeCommands();
         }
 
+        /// <summary>
+        /// Initializes and adds repository commands to the application
+        /// </summary>
         private void InitializeCommands()
         {
             Commands = new List<Command>
@@ -31,6 +37,10 @@ namespace TodoList
 
         }
 
+        /// <summary>
+        /// Starts the command reader loop and executes them
+        /// </summary>
+        /// <returns></returns>
         public async Task RunAsync()
         {
             while (true)
@@ -41,15 +51,25 @@ namespace TodoList
             }
         }
 
+        /// <summary>
+        /// Runs a command by its key
+        /// </summary>
+        /// <param name="commandKey"></param>
         public void RunCommand(string commandKey)
         {
             var command = Commands.FirstOrDefault(c => c.Key == commandKey);
             if (command == null)
+            {
+                Console.WriteLine("Command not found.");
                 return;
+            }
 
             command.Action.Invoke();
         }
 
+        /// <summary>
+        /// Asks the user to mark one item as complete
+        /// </summary>
         private void PromptCompleteItem()
         {
             Console.WriteLine("ID:");
@@ -62,6 +82,9 @@ namespace TodoList
             Console.WriteLine("Item was marked as completed.");
         }
 
+        /// <summary>
+        /// Prompts the user to remove an item by its ID
+        /// </summary>
         private void PromptRemoveItem()
         {
             Console.WriteLine("ID:");
@@ -71,6 +94,9 @@ namespace TodoList
             Console.WriteLine("Item was successfully removed.");
         }
 
+        /// <summary>
+        /// Lets the user create a new item
+        /// </summary>
         private void PromptNewItem()
         {
             var item = new TodoItem();
@@ -85,6 +111,9 @@ namespace TodoList
             Console.WriteLine("Item was successfully added.");
         }
 
+        /// <summary>
+        /// Prints all items to the console
+        /// </summary>
         private void PrintList()
         {
             var list = this.TodoRepository.GetAllItems();

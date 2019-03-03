@@ -6,6 +6,7 @@ using TodoList.Data;
 
 namespace TodoList.Repositories
 {
+    /// <inheritdoc cref="ITodoRepository"/>
     public class TodoRepository : ITodoRepository
     {
         private IList<TodoItem> _todoList;
