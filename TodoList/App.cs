@@ -23,8 +23,6 @@ namespace TodoList
                 string command = Console.ReadLine();
                 RunCommand(command);
             }
-
-            // await Task.Delay(-1);
         }
 
         public void RunCommand(string command)
@@ -72,7 +70,7 @@ namespace TodoList
         private void PromptNewItem()
         {
             var item = new TodoItem();
-            
+
             Console.WriteLine("Title:");
             item.Title = Console.ReadLine();
 
