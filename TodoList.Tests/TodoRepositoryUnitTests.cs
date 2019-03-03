@@ -30,7 +30,6 @@ namespace TodoList.Tests
 
             // Make assertions and check whether new item
             // corresponds to the found item
-            Assert.Equal(newItemId, foundItem.Id);
             Assert.Equal(expectedTitle, foundItem.Title);
             Assert.Equal(expectedContent, foundItem.Content);
         }
