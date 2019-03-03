@@ -9,7 +9,7 @@ namespace TodoList.Repositories
         /// Adds a new item to the to-do list
         /// </summary>
         /// <param name="item">The item to add to the list</param>
-        void AddItem(TodoItem item);
+        TodoItem AddItem(TodoItem item);
 
         /// <summary>
         /// Adds a new item and let's you fill in input parameters
