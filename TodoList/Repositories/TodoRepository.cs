@@ -6,6 +6,7 @@ using TodoList.Data;
 
 namespace TodoList.Repositories
 {
+    /// <inheritdoc cref="ITodoRepository"/>
     public class TodoRepository : ITodoRepository
     {
         private IList<TodoItem> _todoList;
@@ -15,9 +16,13 @@ namespace TodoList.Repositories
             _todoList = new List<TodoItem>();
         }
 
-        public void AddItem(TodoItem item)
+        public TodoItem AddItem(TodoItem item)
         {
+            var id = Guid.NewGuid().ToString();
+            item.Id = id;
             _todoList.Add(item);
+
+            return GetItem(id);
         }
 
         public void AddItem(string title, string content = "", bool isCompleted = false)
