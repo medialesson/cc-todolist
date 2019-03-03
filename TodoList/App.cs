@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Threading.Tasks;
 using TodoList.Data;
@@ -9,10 +11,24 @@ namespace TodoList
     public class App
     {
         public ITodoRepository TodoRepository { get; set; }
+        public List<Command> Commands { get; set; }
 
         public App()
         {
             TodoRepository = new TodoRepository();
+            InitializeCommands();
+        }
+
+        private void InitializeCommands()
+        {
+            Commands = new List<Command>
+            {
+                new Command("list", PrintList),
+                new Command("rem", PromptRemoveItem),
+                new Command("add", PromptNewItem),
+                new Command("complete", PromptCompleteItem)
+            };
+
         }
 
         public async Task RunAsync()
@@ -25,25 +41,13 @@ namespace TodoList
             }
         }
 
-        public void RunCommand(string command)
+        public void RunCommand(string commandKey)
         {
-            switch (command)
-            {
-                case "list":
-                    PrintList();
-                    break;
-                case "rem":
-                    PromptRemoveItem();
-                    break;
-                case "add":
-                    PromptNewItem();
-                    break;
-                case "complete":
-                    PromptCompleteItem();
-                    break;
-                default:
-                    break;
-            }
+            var command = Commands.FirstOrDefault(c => c.Key == commandKey);
+            if (command == null)
+                return;
+
+            command.Action.Invoke();
         }
 
         private void PromptCompleteItem()
