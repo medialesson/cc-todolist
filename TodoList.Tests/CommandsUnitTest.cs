@@ -16,7 +16,7 @@ namespace TodoList.Tests
             var command = new Command("test", (() => { test = "test command"; }));
 
             // Execute
-            command.Action.Invoke();
+            command.Execute();
 
             // Assert
             Assert.Equal("test command", test);

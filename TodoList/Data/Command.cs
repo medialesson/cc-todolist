@@ -15,5 +15,10 @@ namespace TodoList.Data
             Key = key;
             Action = action;
         }
+
+        public void Execute()
+        {
+            Action.Invoke();
+        }
     }
 }
