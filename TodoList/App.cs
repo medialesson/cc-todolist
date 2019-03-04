@@ -18,7 +18,8 @@ namespace TodoList
 
         public App()
         {
-            TodoRepository = new TodoRepository();
+            // Syntax error on purpose
+            TodoRepository = new TodoRepository()
             InitializeCommands();
         }
 
