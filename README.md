@@ -8,9 +8,8 @@ Dieses Repository dient zur Referenz für bekannte Clean Code Techniken. **Eine 
 
 Das Projekt wurde mit .NET Core 2.2 in Visual Studio erstellt. Besondere Anforderungen gibt es nicht:
 
--   Visual Studio 2017, mit .NET Core Workload
--   .NET Core 2.2 SDK oder höher
-    
+- Visual Studio 2017, mit .NET Core Workload
+- .NET Core 2.2 SDK oder höher
 
 ## Build
 
@@ -22,18 +21,25 @@ Dieses Projekt baut auf den [empfohlenen Code Conventions](https://docs.microsof
 
 Dazu gibt es noch ein paar Regeln für das Visual Studio Projekt:
 
--   Repositories werden im Unterordner `Repositories/` angelegt.
-    
--   Service-Klassen werden im Unterordner `Services/` angelegt.
-    
--   Helferklassen, wie Helpers, Extensions, Konverter, etc. werden im Unterordner `Common/Helpers/`, `Common/Extensions/`, etc. angelegt.
-    
--   Datenmodelle werden im Unterordner `Data/` angelegt.
-    
+- Repositories werden im Unterordner `Repositories/` angelegt.
+
+- Service-Klassen werden im Unterordner `Services/` angelegt.
+
+- Helferklassen, wie Helpers, Extensions, Konverter, etc. werden im Unterordner `Common/Helpers/`, `Common/Extensions/`, etc. angelegt.
+
+- Datenmodelle werden im Unterordner `Data/` angelegt.
 
 ## Contributing
 
 Probleme und Fehler können gerne unter den Issues eingereicht werden. Bei Bedarf kann auch gerne ein Pull Request auf dieses Projekt erstellt werden, sodass Deine Änderungen direkt hier übernommen werden können.
+
+## References
+
+Clean Code Developer: https://clean-code-developer.de/  
+UWP App Clean Code Development: [https://www.microsoft.com/de-de/p/clean-code-development/](https://www.microsoft.com/de-de/p/clean-code-development/9wzdncrdfzls?activetab=pivot%3Aoverviewtab)
+
+Git Flow cheatsheet: https://danielkummer.github.io/git-flow-cheatsheet/  
+A successfull Git branching model: https://nvie.com/posts/a-successful-git-branching-model/
 
 ## Lizenz
 
